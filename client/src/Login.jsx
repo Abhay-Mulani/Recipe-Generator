@@ -32,7 +32,7 @@ function Login() {
         {error && <p style={{ color: 'red', marginTop: 8 }}>{error}</p>}
         <div style={{ marginTop: 10, fontSize: '1rem', color: '#4a5568' }}>
           New user?{' '}
-          <a href="/register" style={{ color: '#38b2ac', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Register here</a>
+          <a href="https://recipe-generator-1-kaer.onrender.com/register" style={{ color: '#38b2ac', fontWeight: 600, textDecoration: 'underline', cursor: 'pointer' }}>Register here</a>
         </div>
       </form>
     </div>

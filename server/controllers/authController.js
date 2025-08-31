@@ -13,6 +13,7 @@ exports.register = async (req, res) => {
     res.json({ token });
   } catch (err) {
     res.status(500).json({ error: 'Registration failed.' });
+    console.log(err);
   }
 };
 
