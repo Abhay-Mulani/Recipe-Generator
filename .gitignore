@@ -43,7 +43,8 @@ client/dist/
 # Server
 server/node_modules/
 server/dist/
-
+server/seed.js
+server/seedRecipes.js
 # IDE
 .idea/
 

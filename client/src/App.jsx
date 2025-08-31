@@ -17,7 +17,7 @@ function App() {
     const formData = new FormData();
     formData.append('image', file);
     try {
-      const res = await axios.post('/api/upload', formData);
+  const res = await axios.post('https://recipe-generator-897f.onrender.com/api/upload', formData);
       setImageUrl(res.data.imageUrl);
       recognizeIngredients(res.data.imageUrl);
     } catch (err) {
@@ -30,7 +30,7 @@ function App() {
   const recognizeIngredients = async (url) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/ingredients/recognize', { imageUrl: url });
+  const res = await axios.post('https://recipe-generator-897f.onrender.com/api/ingredients/recognize', { imageUrl: url });
       setIngredients(res.data.ingredients);
       generateRecipe(res.data.ingredients);
     } catch (err) {
@@ -43,7 +43,7 @@ function App() {
   const generateRecipe = async (ingredients) => {
     setLoading(true);
     try {
-      const res = await axios.post('/api/recipes/generate', { ingredients });
+  const res = await axios.post('https://recipe-generator-897f.onrender.com/api/recipes/generate', { ingredients });
       setRecipes([res.data.recipe]);
     } catch (err) {
       alert('Recipe generation failed');

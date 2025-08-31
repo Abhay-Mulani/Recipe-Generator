@@ -8,7 +8,7 @@ function RecipeDetail() {
   // Fetch average rating for the recipe
   const fetchAvgRating = () => {
     if (!recipe?._id || !token) return;
-    axios.get(`/api/recipe-actions/rating/${recipe._id}`, { headers: { Authorization: `Bearer ${token}` } })
+  axios.get(`https://recipe-generator-897f.onrender.com/api/recipe-actions/rating/${recipe._id}`, { headers: { Authorization: `Bearer ${token}` } })
       .then(res => {
         setAvgRating(res.data?.avgRating ?? null);
       })
@@ -27,7 +27,7 @@ function RecipeDetail() {
       const match = window.location.pathname.match(/\/recipe\/(\w+)/);
       const recipeId = match ? match[1] : null;
       if (recipeId) {
-        axios.get(`/api/recipes/${recipeId}`)
+  axios.get(`https://recipe-generator-897f.onrender.com/api/recipes/${recipeId}`)
           .then(res => {
             if (!res.data || !res.data.name || !Array.isArray(res.data.ingredients)) {
               setLoadError(true);
@@ -57,7 +57,7 @@ function RecipeDetail() {
 
   const handleSubmitRating = () => {
     if (!recipe?._id || !token || !userRating) return;
-    axios.post('/api/recipe-actions/rate', { recipeId: recipe._id, rating: userRating }, { headers: { Authorization: `Bearer ${token}` } })
+  axios.post('https://recipe-generator-897f.onrender.com/api/recipe-actions/rate', { recipeId: recipe._id, rating: userRating }, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => {
         setRatingMsg('Thank you for rating!');
         fetchAvgRating();
@@ -71,7 +71,7 @@ function RecipeDetail() {
 
   useEffect(() => {
     if (recipe?._id) {
-      axios.get(`/api/feedback/${recipe._id}`).then(res => {
+  axios.get(`https://recipe-generator-897f.onrender.com/api/feedback/${recipe._id}`).then(res => {
         setFeedback(res.data || []);
       });
       fetchAvgRating();
@@ -87,7 +87,7 @@ function RecipeDetail() {
 
   const handleFavorite = () => {
     if (!recipe?._id || !token) return;
-  axios.post('/api/recipe-actions/favorite', { recipeId: recipe._id }, { headers: { Authorization: `Bearer ${token}` } })
+  axios.post('https://recipe-generator-897f.onrender.com/api/recipe-actions/favorite', { recipeId: recipe._id }, { headers: { Authorization: `Bearer ${token}` } })
       .then(res => {
         setIsFavorite(true);
         setFavoriteMsg('Recipe added to favorites!');
@@ -109,12 +109,12 @@ function RecipeDetail() {
 
   const handleAddFeedback = () => {
     if (!recipe?._id || !token || !userComment || !userRating) return;
-    axios.post('/api/feedback', { recipeId: recipe._id, comment: userComment, rating: userRating }, { headers: { Authorization: `Bearer ${token}` } })
+  axios.post('https://recipe-generator-897f.onrender.com/api/feedback', { recipeId: recipe._id, comment: userComment, rating: userRating }, { headers: { Authorization: `Bearer ${token}` } })
       .then(() => {
         setUserComment('');
         setUserRating(0);
         setFeedbackMsg('Thank you for your feedback!');
-        axios.get(`/api/feedback/${recipe._id}`).then(res => {
+  axios.get(`https://recipe-generator-897f.onrender.com/api/feedback/${recipe._id}`).then(res => {
           setFeedback(res.data || []);
         });
   // No GET endpoint for rating; optionally update avgRating locally or after feedback fetch

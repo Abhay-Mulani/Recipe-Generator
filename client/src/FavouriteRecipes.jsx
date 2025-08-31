@@ -14,7 +14,7 @@ function FavouriteRecipes() {
       return;
     }
     axios
-      .get('/api/recipe-actions/favourites', {
+      .get('https://recipe-generator-897f.onrender.com/api/recipe-actions/favourites', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setRecipes(res.data));
@@ -22,7 +22,7 @@ function FavouriteRecipes() {
 
   const handleRemoveFavourite = async (recipeId) => {
     await axios.post(
-      '/api/recipe-actions/remove-favourite',
+      'https://recipe-generator-897f.onrender.com/api/recipe-actions/remove-favourite',
       { recipeId },
       { headers: { Authorization: `Bearer ${token}` } }
     );

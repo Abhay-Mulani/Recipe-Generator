@@ -24,7 +24,7 @@ function GenerateRecipe() {
   const handleGenerate = async () => {
     setError('');
     try {
-      const res = await axios.post('/api/recipes/generate', {
+  const res = await axios.post('https://recipe-generator-897f.onrender.com/api/recipes/generate', {
         ingredients: ingredients.split(',').map(i => i.trim()),
         dietary,
         servings,
@@ -127,7 +127,7 @@ function GenerateRecipe() {
                 setError('');
                 try {
                   const selectedRecipes = selected.map(idx => recipes[idx]);
-                  await axios.post('/api/recipes/save', selectedRecipes);
+                  await axios.post('https://recipe-generator-897f.onrender.com/api/recipes/save', selectedRecipes);
                   setAddedNotice(true);
                   // Optionally, clear selection and fetch latest recipes for Home
                   setSelected([]);

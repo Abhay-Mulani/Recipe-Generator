@@ -18,29 +18,29 @@ function Home() {
       navigate('/login');
       return;
     }
-    axios.get('/api/recipes').then(res => {
+  axios.get('https://recipe-generator-897f.onrender.com/api/recipes').then(res => {
       setRecipes(res.data);
     });
   }, [navigate, token]);
 
   const handleRate = async (recipeId, rating) => {
-    await axios.post('/api/recipe-actions/rate', { recipeId, rating }, { headers: { Authorization: `Bearer ${token}` } });
+  await axios.post('https://recipe-generator-897f.onrender.com/api/recipe-actions/rate', { recipeId, rating }, { headers: { Authorization: `Bearer ${token}` } });
     alert('Thank you for rating!');
   };
 
   const handleFavorite = async (recipeId) => {
-    await axios.post('/api/recipe-actions/favorite', { recipeId }, { headers: { Authorization: `Bearer ${token}` } });
+  await axios.post('https://recipe-generator-897f.onrender.com/api/recipe-actions/favorite', { recipeId }, { headers: { Authorization: `Bearer ${token}` } });
     setFavStatus({ ...favStatus, [recipeId]: true });
   };
 
   const handleShowFeedback = async (recipeId) => {
     setSelectedRecipe(recipeId);
-    const res = await axios.get(`/api/feedback/${recipeId}`);
+  const res = await axios.get(`https://recipe-generator-897f.onrender.com/api/feedback/${recipeId}`);
     setFeedback({ ...feedback, [recipeId]: res.data });
   };
 
   const handleAddFeedback = async (recipeId) => {
-    await axios.post('/api/feedback', { recipeId, comment, rating }, { headers: { Authorization: `Bearer ${token}` } });
+  await axios.post('https://recipe-generator-897f.onrender.com/api/feedback', { recipeId, comment, rating }, { headers: { Authorization: `Bearer ${token}` } });
     setComment('');
     setRating(0);
     handleShowFeedback(recipeId);

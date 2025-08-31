@@ -13,7 +13,7 @@ function Login() {
     e.preventDefault();
     setError('');
     try {
-      const res = await axios.post('/api/auth/login', { email, password });
+  const res = await axios.post('https://recipe-generator-897f.onrender.com/api/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
       navigate('/home');
     } catch (err) {
