@@ -160,6 +160,16 @@ function RecipeDetail() {
           <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Cooking Time:</span>
           <div style={{ color: '#444', fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%', marginBottom: 8 }}>{recipe.cookingTime ?? recipe.time ?? 'N/A'} min</div>
         </div>
+          <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Steps:</span>
+          {Array.isArray(recipe.steps) ? (
+            <ol style={{ color: '#444', margin: 0, marginTop: 8, fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%' }}>
+              {recipe.steps.map((step, idx) => (
+                <li key={idx} style={{ marginBottom: 8, paddingLeft: 4, fontWeight: 500 }}>{step}</li>
+              ))}
+            </ol>
+          ) : (
+            <div style={{ color: '#888', fontSize: 16 }}>{recipe.steps || 'No steps available.'}</div>
+          )}
         <div style={{ marginBottom: 24, width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Difficulty:</span>
           <div style={{ color: '#444', fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%', marginBottom: 8 }}>{recipe.difficulty ?? 'N/A'}</div>
