@@ -48,19 +48,16 @@ function Home() {
 
   // ...existing code...
   return (
-    <div style={{ minHeight: '100vh', width: '100vw', background: 'linear-gradient(135deg, #6c63ff 0%, #222 100%)', paddingBottom: 40, fontFamily: 'Poppins, Arial, sans-serif', overflowX: 'hidden' }}>
+  <div style={{ minHeight: '100vh', width: '100vw', background: 'linear-gradient(135deg, #6c63ff 0%, #222 100%)', paddingBottom: 40, fontFamily: 'Poppins, Arial, sans-serif', overflowX: 'hidden' }}>
       <Navbar />
-      <h2 style={{ textAlign: 'center', marginTop: 30, color: '#fff', fontSize: 38, fontWeight: 800, letterSpacing: 1, textShadow: '0 2px 8px #222' }}>All Recipes</h2>
+      <h2 style={{ textAlign: 'center', marginTop: 30, color: '#fff', fontSize: 44, fontWeight: 900, letterSpacing: 1.5, textShadow: '0 2px 12px #222' }}>All Recipes</h2>
       <div style={{
-        width: '200%',
-        maxWidth: '1200px',
+        width: '100%',
+        maxWidth: '1400px',
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, minmax(320px, 1fr))',
-        columnGap: '300px',
-        rowGap: '100px',
-        marginTop: 32,
-        marginLeft: '10%',
-        marginRight: '10%',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(380px, 1fr))',
+        gap: '48px',
+        margin: '48px auto 0',
         justifyItems: 'center',
       }}>
         {recipes.map((r, i) => (
@@ -68,17 +65,16 @@ function Home() {
             key={i}
             style={{
               background: '#fff',
-              borderRadius: 28,
-              boxShadow: '0 8px 32px rgba(108,99,255,0.15)',
-              padding: '32px 28px',
-              width: '120%',
-              height: '80%',
-              minWidth: 320,
-              minHeight: 320,
+              borderRadius: 32,
+              boxShadow: '0 12px 36px rgba(108,99,255,0.18)',
+              padding: '40px 32px',
+              width: '100%',
+              minWidth: 340,
+              minHeight: 420,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
-              border: '2px solid #f8fbff',
+              border: '3px solid #ffb86c',
               color: '#222',
               fontFamily: 'inherit',
               position: 'relative',
@@ -86,15 +82,21 @@ function Home() {
               transition: 'box-shadow 0.2s, transform 0.2s',
               cursor: 'pointer',
             }}
-            onMouseEnter={e => e.currentTarget.style.boxShadow = '0 12px 36px #6c63ff33'}
-            onMouseLeave={e => e.currentTarget.style.boxShadow = '0 8px 32px rgba(108,99,255,0.15)'}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = 'translateY(-8px) scale(1.03)';
+              e.currentTarget.style.boxShadow = '0 20px 48px #6c63ff33';
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = 'translateY(0) scale(1)';
+              e.currentTarget.style.boxShadow = '0 12px 36px rgba(108,99,255,0.18)';
+            }}
             onClick={() => navigate(`/recipe/${r._id}`, { state: { recipe: r } })}
           >
-            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt={r.name} style={{ width: '100%', height: '50%', objectFit: 'cover', borderRadius: 18, marginBottom: 18, boxShadow: '0 6px 24px #ffb86c44', border: '2.5px solid #ffb86c' }} />
-            <h3 style={{ fontWeight: 900, fontSize: 18, marginBottom: 8, textAlign: 'center', color: '#222', letterSpacing: 0.5 }}>{r.name}</h3>
-            <p style={{ fontSize: 14, marginBottom: 10, textAlign: 'center', color: '#444', fontWeight: 500 }}><b>Ingredients:</b> {r.ingredients.map(ing => ing.split(/,|\*/)[0].replace(/\d.*$/, '').replace(/\s*\(.*\)/, '').trim()).join(', ')}</p>
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt={r.name} style={{ width: '340px', height: '220px', objectFit: 'cover', borderRadius: 22, marginBottom: 24, boxShadow: '0 8px 32px #ffb86c44', border: '3px solid #e9e9ff' }} />
+            <h3 style={{ fontWeight: 900, fontSize: 28, marginBottom: 18, textAlign: 'center', color: '#222', letterSpacing: 1 }}>{r.name}</h3>
+            <p style={{ fontSize: 18, marginBottom: 16, textAlign: 'center', color: '#444', fontWeight: 500 }}><b>Ingredients:</b> {r.ingredients.map(ing => ing.split(/,|\*/)[0].replace(/\d.*$/, '').replace(/\s*\(.*\)/, '').trim()).join(', ')}</p>
             {r.nutrition && (
-              <div style={{ fontSize: 13, color: '#555', marginBottom: 10, textAlign: 'center', background: '#f8fbff', borderRadius: 8, padding: '8px 12px', boxShadow: '0 2px 8px #eee' }}>
+              <div style={{ fontSize: 16, color: '#555', marginBottom: 14, textAlign: 'center', background: '#f8fbff', borderRadius: 12, padding: '12px 18px', boxShadow: '0 2px 12px #eee', fontWeight: 500 }}>
                 <b>Nutritional Info (per serving):</b><br />
                 Calories: {r.nutrition.calories} kcal<br />
                 Protein: {r.nutrition.protein} g<br />
@@ -102,8 +104,7 @@ function Home() {
                 Fat: {r.nutrition.fat} g
               </div>
             )}
-            {/* Favorite, rating, and feedback UI moved to RecipeDetail.jsx */}
-            </div>
+          </div>
         ))}
       </div>
     </div>
