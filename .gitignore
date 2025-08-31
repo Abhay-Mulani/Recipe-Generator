@@ -1,0 +1,52 @@
+# Node
+node_modules/
+npm-debug.log
+.env
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build
+/dist
+/build
+
+# VSCode
+.vscode/
+
+# MongoDB
+*.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Misc
+*.swp
+*.swo
+
+# Coverage
+coverage/
+
+# Others
+*.bak
+*.tmp
+
+# React
+client/node_modules/
+client/dist/
+
+# Server
+server/node_modules/
+server/dist/
+
+# IDE
+.idea/
+
+# Static
+Static/
+__DATA__/
