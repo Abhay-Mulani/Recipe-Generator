@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -155,6 +154,18 @@ function RecipeDetail() {
               )
             ))}
           </ul>
+        </div>
+        <div style={{ marginBottom: 24, width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Nutritional Information (per serving):</span>
+          {recipe.nutritionalInfo || recipe.nutrition || recipe.nutritional_info ? (
+            <ul style={{ color: '#444', margin: 0, marginTop: 8, fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%' }}>
+              {Object.entries(recipe.nutritionalInfo || recipe.nutrition || recipe.nutritional_info).map(([key, value]) => (
+                <li key={key} style={{ marginBottom: 8, paddingLeft: 4, fontWeight: 500 }}>{key.charAt(0).toUpperCase() + key.slice(1)}: {value}</li>
+              ))}
+            </ul>
+          ) : (
+            <div style={{ color: '#888', fontSize: 16 }}>No nutritional information available.</div>
+          )}
         </div>
         <div style={{ marginBottom: 24, width: '100%', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
           <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Cooking Time:</span>
