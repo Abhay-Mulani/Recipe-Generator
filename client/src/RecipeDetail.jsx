@@ -171,7 +171,9 @@ function RecipeDetail() {
           <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Cooking Time:</span>
           <div style={{ color: '#444', fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%', marginBottom: 8 }}>{recipe.cookingTime ?? recipe.time ?? 'N/A'} min</div>
         </div>
+          <div style={{ width: '100%', textAlign: 'left' }}>
           <span style={{ fontWeight: 700, color: '#6c63ff', fontSize: 22, display: 'block', marginBottom: 10 }}>Steps:</span>
+        </div>
           {Array.isArray(recipe.steps) ? (
             <ol style={{ color: '#444', margin: 0, marginTop: 8, fontSize: 18, paddingLeft: 24, borderLeft: '4px solid #6c63ff', background: '#f7f7ff', borderRadius: 12, boxShadow: '0 2px 8px #6c63ff11', paddingTop: 12, paddingBottom: 12, width: '100%' }}>
               {recipe.steps.map((step, idx) => (
